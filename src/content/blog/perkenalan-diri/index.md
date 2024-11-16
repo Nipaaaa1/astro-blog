@@ -1,0 +1,15 @@
+---
+title: "Perkenalan diri"
+description: "Cuman perkenalan singkat tentang penulis."
+date: "Nov 15 2024"
+---
+
+Mungkin kelihatan terlalu formal, tapi aku pengen kenalin diri dulu buat postingan pertamaku disini.
+
+Aku Devan, seorang programmer _ngakunya_ yg suka sama hal-hal yg menarik. Aku sebenernya gk terlalu suka nulis, tapi aku pengen coba terjun ke dunia konten kreasi dan yg paling gampang dan murah, karena aku gk punya banyak uang :') adalah blogging ini.
+
+Aku bakal share tentang **hal-hal menarik**, kayak programming, science, atau bahkan yg lebih random kayak game yg aku mainin dan hal remeh lainnya. Aku udah bikin target buat post 1 - 2 kali seminggu. Semoga aja aku bisa konsisten di blog ini.
+
+Aku harap kedepannya, blog ini akan berkembang dan bisa jadi tempat buat kamu yg sudah bosen dengan konten di sosial media dan cuman pengen ngeliat tulisan orang normal yg _mungkin lebih relate sama kehidupanmu_.
+
+Sekian aja untuk perkenalan yg mungkin agak kaku ini, sampai ketemu di blog selanjutnya!

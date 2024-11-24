@@ -2,36 +2,30 @@ import type { Site, Metadata, Socials } from "@types";
 
 export const SITE: Site = {
   NAME: "SYD Blog",
-  EMAIL: "devansayidina42@gmail.rom",
+  EMAIL: "devan@syd.my.id",
   NUM_POSTS_ON_HOMEPAGE: 3,
-  NUM_WORKS_ON_HOMEPAGE: 2,
   NUM_PROJECTS_ON_HOMEPAGE: 3,
 };
 
 export const HOME: Metadata = {
   TITLE: "Home",
-  DESCRIPTION: "Astro Nano is a minimal and lightweight blog and portfolio.",
+  DESCRIPTION: "SYD blog adalah sebuah blog yg berisi tentang programming dan hal - hal menarik lainnya yg ditulis oleh Devan.",
 };
 
 export const BLOG: Metadata = {
   TITLE: "Blog",
-  DESCRIPTION: "A collection of articles on topics I am passionate about.",
-};
-
-export const WORK: Metadata = {
-  TITLE: "Work",
-  DESCRIPTION: "Where I have worked and what I have done.",
+  DESCRIPTION: "Kumpulan blog dalam beragam topik yg sudah aku tulis.",
 };
 
 export const PROJECTS: Metadata = {
   TITLE: "Projects",
-  DESCRIPTION: "A collection of my projects, with links to repositories and demos.",
+  DESCRIPTION: "Kumpulan project yg sudah pernah aku buat.",
 };
 
 export const SOCIALS: Socials = [
   { 
-    NAME: "twitter-x",
-    HREF: "https://twitter.com/markhorn_dev",
+    NAME: "x (formerly twitter)",
+    HREF: "https://x.com/Nipaaaa1b",
   },
   { 
     NAME: "github",
@@ -39,6 +33,6 @@ export const SOCIALS: Socials = [
   },
   { 
     NAME: "linkedin",
-    HREF: "https://www.linkedin.com/in/markhorn-dev",
+    HREF: "https://www.linkedin.com/in/devan-sayidina-52586a30a",
   }
 ];

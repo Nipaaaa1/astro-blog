@@ -1,0 +1,93 @@
+---
+title: 'Cara Error Handling Promise di JavaScript'
+description: 'Beberapa cara populer buat Promise Error Handling'
+date: 'Nov 24 2024'
+---
+
+# Kenapa harus Handle Error di Promise?
+Kalau kamu pernah pake JavaScript, kamu pasti kenal sama konsep Promise dong. Promise sering dipakai untuk melakukan sebuah tugas yg terjadi secara Asynchronous.
+
+Tapi, banyak orang yg pake Promise asal - asalan dan gk nerapin Error Handling yg bener. Ini bisa bikin program kamu ngeluarin error yg bisa langsung berhentiin aplikasi yg kamu bikin. Kamu dan User kamu pasti gk pengen itu terjadi, makanya kamu harus tau gimana caranya Error Handling Promise.
+
+---
+# Cara Error Handling Promise yg Bener.
+Sebenernya, ada banyak cara yg bisa kamu lakukan buat Error Handling sebuah Promise, aku gk akan bahas semua tapi aku akan bahas yg paling sering dipakai.
+
+## 1. Pakai `.catch()`
+Cara yg pertama adalah dengan `.catch()`. Nah, cara ini biasanya dipake kalau kamu pakai `.then()` di Promise. Contohnya gini:
+
+```js
+fetch(url).then(data => data.json()).catch(error => console.error(error))
+```
+
+Jadi, saat `fetch()` sudah selesai melakukan request, maka ada 2 kemungkinan yg bisa terjadi, yaitu Resolved ( yg di lanjutkan di `.then()` ) dan Rejected. Nah ketika sebuah Promise itu berstatus Rejected, maka Error yg dihasilkan akan masuk kedalam `.catch()`. Disini kita bisa handle Error ini, contohnya bikin log Error.
+
+Tapi, metode ini punya sebuah kekurangan, yaitu kamu gk bisa akses data Error kamu diluar `.catch()`. Biasanya, kamu gk perlu khawatir soal ini, tapi dalam kasus tertentu, ini bakal sedikit nyusahin.
+
+## 2. Pakai `try/catch` Block
+Dengan adanya `async/await`, banyak developer yg lebih sering pakai `try/catch` ketimbang `.then()/.catch()` untuk Promise. Ini karena syntax `try/catch` lebih mudah dibaca dan gk bakal bikin _Callback Hell_ yg jadi masalah di `.then()/.catch()`. Contoh pemakaiannya gini:
+
+```js
+try {
+	const response = await fetch(url)
+
+	data = response.json()
+} catch(error) {
+	console.error(error)
+}
+```
+
+Kelihatan lebih rapih kan? Sekarang udah jelas kalau `fetch()` nya gagal, `catch` akan dipanggil dan bikin sebuah log Error.
+
+Metode ini juga punya kelemahan yg mirip dengan metode pertama, yaitu data Error yg gk bisa diakses diluar `catch` block.
+
+## 3. Pakai Trik `Promise.allSettled()`
+Ini adalah metode favoritku, yaitu pakai `Promise.allSettled()`. Trik ini bikin kode yg kamu bikin jauh lebih rapih lagi dan lebih mudah dipahami lagi. Trik ini memanfaatkan sifat dari `Promise.allSettled()` yg selalu selesai, tidak peduli sebuah Promise itu Resolved atau Rejected.
+
+Pertama, kamu bisa bikin sebuah function buat handle sebuah Promise.
+
+```js
+// Contoh pake arrow function
+const handlePromise = async promise => Promise.allSettled([promise]).then([{value, reason}] => [value, reason])
+
+// Contoh pake function biasa
+async function handlePromise(promise) {
+
+	return Promise.allSettled([promise])
+		.then(function([{value, reason}]) {
+		
+			return [value, reason]
+		})
+}
+```
+
+Function tadi bakal ngambil sebuah Promise dan di masukin kedalam `Promise.allSettled()`, terus hasilnya akan di return dalam bentuk Array yg isinya ada `value` dan `reason`.
+
+`value` adalah data yg bakal muncul kalau sebuah Promise itu Resolved, sedangkan `reason` adalah pesan Error yg bakal muncul kalau sebuah Promise itu Rejected. Ini bikin `value` akan `undefined` pas Promise itu Rejected dan `reason` akan `undefined` pas Promise itu Resolved.
+
+Nah, kamu bisa manfaatin ini dan Handle Error nya kayak gini:
+
+```js
+const [data, error] = await handlePromise(fetch(url))
+
+if(error) {
+	console.error(error)
+}
+
+// Lanjut proses data
+```
+
+Ini bikin Error bisa diakses tanpa terbatas oleh scope dan kodenya jauh lebih mudah dimengerti karena kamu cuman pake `if` buat handle error nya.
+
+Tentu, metode ini juga punya kekurangan, kalau kamu punya banyak Promise, kamu bakal bikin banyak banget `if` yg bisa bikin kodenya susah dibaca.
+
+---
+# Kenapa gk pake `Promise.all()`?
+Nah, mungkin kamu mikir kayak gini. Sebenarnya, kamu bisa pake `Promise.all()` buat metode ke 3. Tapi, kekurangannya adalah `Promise.all()` bakal gagal kalau Promise kamu Rejected. Ini bikin kamu ngelakuin Error Handling 2× untuk hasil yg sama kayak pake `Promise.allSettled()`.
+
+Jadi saranku, pake `Promise.allSettled()` aja lah.
+
+---
+Oke, mungkin segitu aja dulu. Error Handling di Promise itu penting dan ini cuman beberapa cara aja, ada banyak cara lain seperti pake Library atau bahkan ngegabungin antara `await` dan `.catch()`. Tapi, kalau aku bahas nanti artikel ini bakal kepanjangan lagi.
+
+Di artikel selanjutnya, aku akan bahas soal TypeScript! Kalau kamu penasaran, pantengin terus Blog ini ya!

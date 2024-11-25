@@ -182,7 +182,7 @@ function toggleTheme(dark) {
 
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DF9P5FDLPX"></script>
-<script>
+<script is:inline client:load>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());

@@ -1,6 +1,6 @@
 ---
 title: 'Cara Error Handling Promise di JavaScript'
-description: 'Beberapa cara populer buat Promise Error Handling'
+description: 'Banyak orang yg pakai Promise di JavaScript tapi tidak melakukan Error Handling dengan benar. Artikel ini akan kasih beberapa caranya.'
 date: 'Nov 24 2024'
 ---
 

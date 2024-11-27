@@ -12,6 +12,11 @@ export const HOME: Metadata = {
   DESCRIPTION: "SYD blog adalah sebuah blog yg berisi tentang programming dan hal - hal menarik lainnya yg ditulis oleh Devan.",
 };
 
+export const ERROR: Metadata = {
+  TITLE: "404 Page Not Found",
+  DESCRIPTION: "Maaf, halaman yg kamu cari gk ada di blog ini."
+}
+
 export const BLOG: Metadata = {
   TITLE: "Blog",
   DESCRIPTION: "Kumpulan blog dalam beragam topik yg sudah aku tulis.",

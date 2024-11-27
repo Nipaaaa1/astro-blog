@@ -1,0 +1,22 @@
+---
+import PageLayout from '@layouts/PageLayout.astro'
+import { ERROR } from '@consts'
+import Container from '@components/Container.astro'
+import BackToPrev from '@components/BackToPrev.astro'
+---
+
+<PageLayout title={ERROR.TITLE} description={ERROR.DESCRIPTION}>
+  <Container>
+    <div class="space-y-4">
+    <h1 class="animate font-semibold">
+      Ups, kayaknya halaman yg kamu cari gk ada deh...
+    </h1>
+    <p class="animate text-sm">
+      Tenang aja, aku bisa kembaliin kamu ke halaman depan
+    </p>
+    <BackToPrev href='/'>
+      Back to Home
+      </BackToPrev>
+    </div>
+  </Container>
+</PageLayout>

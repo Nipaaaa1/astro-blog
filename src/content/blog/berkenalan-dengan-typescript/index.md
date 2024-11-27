@@ -17,7 +17,7 @@ Biar lebih jelas coba lihat sebuah contoh kode di JavaScript ini:
 let nama = 'Udin'
 
 function selamatPagi(nama) {
-	console.log(`Hi ${nama}, Selamat Pagi!`
+	console.log(`Hi ${nama}, Selamat Pagi!`)
 }
 
 selamatPagi(nama)

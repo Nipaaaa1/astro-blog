@@ -32,5 +32,24 @@ const { title, description } = Astro.props;
       <slot />
     </main>
     <Footer />
+    <script>
+    
+    import { animate, inView, stagger } from 'motion'
+    const main = () => { 
+    inView('.animate', el => {
+    animate(el.target, {
+        opacity: 1,
+        y: [20, 0]
+      },
+      {
+        duration: 0.3,
+        delay: stagger(0.15)
+        })
+    })
+    }
+
+    document.addEventListener('DOMContentLoaded', () => main())
+    document.addEventListener('astro:after-swap', () => main())
+    </script>
   </body>
 </html>

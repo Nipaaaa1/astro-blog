@@ -8,7 +8,7 @@ export const SITE: Site = {
 };
 
 export const HOME: Metadata = {
-  TITLE: "Home",
+  TITLE: "Bahas Programming dan Web Development dengan Santai",
   DESCRIPTION: "SYD blog adalah sebuah blog yg berisi tentang programming dan hal - hal menarik lainnya yg ditulis oleh Devan.",
 };
 

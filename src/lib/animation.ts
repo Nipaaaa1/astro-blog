@@ -1,4 +1,4 @@
-import { animate, inView, stagger } from "motion"
+import { animate, inView, stagger } from "motion";
 
 export const showAnimation = (element: string) => {
     animate(element, {
@@ -7,5 +7,5 @@ export const showAnimation = (element: string) => {
     {
       duration: 0.5,
       delay: stagger(0.1)
-    })
-}
+    });
+};

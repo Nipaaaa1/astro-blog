@@ -15,7 +15,7 @@ export const HOME: Metadata = {
 export const ERROR: Metadata = {
   TITLE: "404 Page Not Found",
   DESCRIPTION: "Maaf, halaman yg kamu cari gk ada di blog ini."
-}
+};
 
 export const BLOG: Metadata = {
   TITLE: "Blog",

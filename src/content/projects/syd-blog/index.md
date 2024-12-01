@@ -2,8 +2,8 @@
 title: "SYD Blog"
 description: "Yup, blog ini juga termasuk project aku."
 date: "Nov 15 2024"
-demoURL: "https://astro-sphere-demo.vercel.app"
-repoURL: "https://github.com/markhorn-dev/astro-sphere"
+demoURL: "https://syd.my.id"
+repoURL: "https://github.com/Nipaaaa1/astro-blog"
 ---
 
 Blog ini juga bisa dihitung sebagai salah satu project ku. Ya walaupun ini cuman hasil _fork_ tapi gapapa lah.

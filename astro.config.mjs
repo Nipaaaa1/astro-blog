@@ -5,5 +5,8 @@ import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   site: "https://syd.my.id",
+  image: {
+    domain: ['i.ibb.co.com']
+  },
   integrations: [mdx(), sitemap(), tailwind()],
 });

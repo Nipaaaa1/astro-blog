@@ -44,7 +44,7 @@ const { Content } = await post.render();
       </h1>
     </div>
     <article class='animate'>
-      <Image src={post.data.thumbnailUrl} alt='' width='720' height='360' class='w-full aspect-video' />
+      <Image src={post.data.thumbnailUrl} alt='' inferSize class='w-full aspect-video' />
       <Content />
     </article>
   </Container>

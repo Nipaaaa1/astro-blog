@@ -62,7 +62,7 @@ const { Content } = await project.render();
       )}
     </div>
     <article class="animate">
-      <Images src={project.data.thumbnailUrl} alt='' fill />
+      <Images src={project.data.thumbnailUrl} alt='' loading='eager' fill />
       <Content />
     </article>
   </Container>

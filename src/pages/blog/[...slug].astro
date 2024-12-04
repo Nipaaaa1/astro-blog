@@ -44,7 +44,7 @@ const { Content } = await post.render();
       </h1>
     </div>
     <article class='animate'>
-      <Images src={post.data.thumbnailUrl} alt='' fill />
+      <Images src={post.data.thumbnailUrl} alt='' loading='eager' fill />
       <Content />
     </article>
   </Container>

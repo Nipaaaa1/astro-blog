@@ -6,9 +6,10 @@ interface Props {
   src: string
   alt: string
   fill: boolean
+  loading: 'eager' | 'lazy'
 }
 
-const { src, alt, fill } = Astro.props
+const { src, alt, fill, loading = 'lazy' } = Astro.props
 
 const manipulateCloudinaryUrl = (url: string): string => {
   const uploadIndex = url.indexOf('/upload/');
@@ -17,4 +18,4 @@ const manipulateCloudinaryUrl = (url: string): string => {
 }
 ---
 
-<Image src={manipulateCloudinaryUrl(src)} alt={alt} class={cn(['rounded-md', fill ? 'w-full' : ''])} inferSize />
+<Image src={manipulateCloudinaryUrl(src)} alt={alt} class={cn(['rounded-md', fill ? 'w-full' : ''])} loading={loading} fetchpriority={loading === 'eager' ? 'high' : 'auto'} inferSize />

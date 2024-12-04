@@ -5,7 +5,7 @@ import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import { readingTime } from "@lib/utils";
 import BackToPrev from "@components/BackToPrev.astro";
-import { Image } from "astro:assets";
+import Images from "../../components/Images.astro";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("blog"))
@@ -44,7 +44,7 @@ const { Content } = await post.render();
       </h1>
     </div>
     <article class='animate'>
-      <Image src={post.data.thumbnailUrl} alt='' inferSize class='w-full aspect-video' />
+      <Images src={post.data.thumbnailUrl} alt='' fill />
       <Content />
     </article>
   </Container>

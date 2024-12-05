@@ -1,0 +1,84 @@
+---
+title: "Mengenal Git Rebase dan Squash"
+description: "Add, Commit, Switch, Merge, Push. Mungkin kamu udah pernah pake semua command git tadi, tapi selain itu, git punya fitur lain yg gk kalah berguna, yaitu Rebase dan Squash."
+thumbnailUrl: "https://res.cloudinary.com/dpd0rgmco/image/upload/v1733064092/blog/04-mengenal-git-rebase-dan-squash/20241201_164420_omcogp.jpg"
+date: "Dec 05 2024"
+---
+
+import Images from '@components/Images.astro'
+
+_Add, Commit, Switch, Merge, Push._ Mungkin kamu udah pernah pake semua command git tadi, tapi selain itu, git punya fitur lain yg gk kalah berguna, yaitu _Rebase dan Squash Commit_., Penasaran gimana cara pakenya?
+
+## Git Rebase: Alternatif dari Merge.
+Pertama kita bahas _Rebase_ dulu. Kalau kamu pernah pake Merge, kamu pasti tau kalau pengen Merge dua branch yg berbeda, kamu harus bikin sebuah _Merge commit_ buat ngelakuin itu. Nah masalahnya, banyak orang yg gk suka ini karena bikin history git mereka jadi berantakan dan penuh dengan Merge commit. Nah, disinilah Rebase itu kepake.
+
+Rebase itu simpelnya ngubah awal atau _base_ dari sebuah branch, ke depan branch lainnya. Coba lihat contoh gambar ini:
+
+<Images src="https://res.cloudinary.com/dpd0rgmco/image/upload/v1733245287/blog/04-mengenal-git-rebase-dan-squash/git-rebase-01_rpm4yk.png" alt="Contoh penggunaan git rebase" fill />
+
+Jadi sebelum di rebase, feature branch punya base dari commit pertama main branch. Tapi setelah rebase, base dari feature branch pindah menjadi ke Commit terbaru dari main branch. Ini bikin history git-nya linear / satu jalur dan ketika kamu coba merge main branch sama feature branch, maka akan terjadi _fast-forward merge_ yg gk perlu bikin merge commit baru.
+
+Kelihatannya agak ribet, jadi coba kita praktekin aja.
+
+- Pertama, buat sebuah folder baru, namain aja "latihan rebase". Habis itu, coba inisialisasi repo git baru pake `git init`. Pastiin juga kalau kamu berada di branch master.
+- Kalau udah, terus bikin file baru namanya "rebase.txt". File ini yg akan kita pake buat latihan. Habis itu, coba isi file tadi jadi kayak gini:
+	```
+	Halo ini latihan git rebase.
+	```
+- Nah, terus kamu coba commit file tadi, message-nya `tambah file rebase.txt`
+- Habis itu, kamu bikin branch baru, kasih nama "latihan" aja.
+- Di branch latihan, kamu coba tambahin isi file rebase.txt jadi gini:
+	```
+	Halo ini latihan git rebase.
+
+	Ini commit baru dari branch latihan.
+	```
+- Kalau udah, commit lagi filenya, dan messagenya `edit rebase.txt`
+- Terus, kamu balik lagi ke branch utama kamu pake `git switch master`. Dan disini, kamu bikin file baru yg namanya "rebase2.txt".
+- Habis itu, coba isi file baru tadi jadi gini:
+	```
+	Ini file rebase kedua.
+	```
+- Kalau udah, tinggal commit aja filenya pake message `tambah file rebase2.txt`
+- Nah, sekarang persiapannya udah selesai. Kamu bisa balik lagi ke branch latihan tadi dan coba lihat log-nya pake `git log --oneline`. Kamu bakal kalau cuman ada dua commit disana, yaitu `tambah file rebase.txt` dan `edit file rebase.txt`. Commit `tambah file rebase2.txt` itu gk ada karena base dari branch latihan adalah di commit pertama branch utama.
+- Sekarang coba kamu ketik command `git rebase master`. Ini artinya kamu mau melakukan rebase branch saat ini (latihan) ke branch main.
+- Kalau udah, coba lihat lagi log-nya. Disini kamu bisa lihat kalau base dari branch latihan bukan lagi di commit pertama dari branch utama, tapi di commit `tambah file rebase2.txt`.
+
+Dan selamat, kamu udah belajar cara rebase sebuah branch. Eits, sebelum lanjut, aku pengen kasih tahu hal penting dulu nih. Walaupun rebase itu fitur yg bagus, kamu harus inget kalau **rebase itu bersifat destruktif** karena mengubah history dari repo kamu. Ada dua aturan yg pada umumnya harus di ikutin pas pake rebase yaitu, **jangan rebase master / main branch** dan **jangan rebase remote branch**.
+
+## Git Squash: Buat banyak Commit jadi Satu.
+Kamu pasti pernah bikin beberapa commit kecil yg kalau dipikir-pikir, kayaknya bisa dibikin satu commit aja karena saling berhubungan, nah ini adalah kasus yg pas banget buat pakai _git squash_.
+
+Beda dengan rebase yg agak susah buat dipelajari, squash cenderung lebih _beginners friendly_. Konsepnya simpel kok, coba lihat gambar ini:
+
+<Images src="https://res.cloudinary.com/dpd0rgmco/image/upload/v1733245286/blog/04-mengenal-git-rebase-dan-squash/git-squash-01_lrwcb4.png" alt="Contoh penggunaan git squash" fill />
+
+Simpel kan? sebelum squash ada 3 commit, A, B, sama C. Tapi setelah pake squash, cuman sisa 2 commit, A sama D dimana commit D itu hasil _squash_ dari commit B dan C.
+
+Ini berguna banget buat ngerapihin commit kamu yg terlalu banyak dan mau diringkas jadi tinggal beberapa commit aja.
+
+Yg unik adalah, ada beberapa cara buat ngelakuin proses squash ini, tapi yg paling sering itu pake `git merge --squash` buat ngelakuin _merge squash_ dan `git rebase -i` buat ngelakuin _interactive rebase_. Dari dua cara ini, aku cuman akan bahas cara kedua karena itu yg paling sering dipake.
+
+Nah, biar lebih jelas lagi, langsung aja kita praktekin ke repository yg tadi.
+
+> Disini, kamu bakal pake vim buat edit, kalau kamu lebih suka pake code editor lain, kamu bisa ganti jadi lebih yg lain, contohnya ke vscode pake ini`git config --global core.editor "code --wait"`.
+
+- Lanjutin yg tadi, pastiin kamu lagi ada di branch latihan.
+- Habis itu coba masuk ke file rebase.txt dan tambahin
+	```
+	Halo ini latihan git rebase.
+
+	Ini commit baru dari branch latihan.
+
+	Ini commit baru buat belajar squash.
+	```
+- Kalau udah, buat commit baru namanya `commit buat belajar squash`. Habis itu, kamu bisa lihat log nya, harusnya kamu bisa ngeliat ada commit baru yg ditambahin.
+- Nah, sekarang kita mulai proses squash nya. Coba ketik command `git rebase -I HEAD~2` untuk masuk ke mode _interactive rebase_.
+- Di mode ini, kamu akan ngelihat 2 commit dari branch latihan dan di depan kedua commit itu, pasti ada kata `pick`. Nah, di commit `commit buat belajar squash` kamu ubah mode nya dari `pick` ke `squash`. Ini gunanya buat bikin commit nya berada di mode squash dan bakal digabung sama commit yg ditandai sama `pick`. Terus kamu save.
+- Setelah itu, kamu akan ngelihat 2 commit message. Nah, kamu tinggal hapus salah satu commit message yg mau kamu pake atau bahkan ganti sama yg baru. Kalau udah, kamu bisa save aja.
+- Kalau udah, kamu tinggal cek log nya lagi, harusnya commit yg kedua di branch latihan udah gk ada dan udah selesai di gabung.
+
+Selamat kamu udah selesai ngelakuin squash. Gampang kan?
+
+---
+Nah, sekarang kamu harusnya udah tau gimana cara ngelakuin _rebase_ dan _squash_ di dalam git. Habis ini, kamu bisa cobain pake _rebase_ dan _squash_ di project kamu biar history repository kamu jadi lebih bersih dan gampang di maintenence. Oke, sekian dulu buat topik ini. Jangan lupa buat share artikel ini ke orang lain yg pengen belajar tentang git juga! Kalau kamu punya saran, kamu bisa cari aku di sosmedku ya!

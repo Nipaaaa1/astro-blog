@@ -9,8 +9,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", ...defaultTheme.fontFamily.sans],
+        sans: ["WorkSans", ...defaultTheme.fontFamily.sans],
         serif: ["Lora", ...defaultTheme.fontFamily.serif],
+        title: ["BoldGroove", ...defaultTheme.fontFamily.serif]
       },
     },
   },

@@ -35,14 +35,8 @@ body {
 body {
   @apply font-sans antialiased;
   @apply flex flex-col;
-  @apply bg-zinc-100 dark:bg-zinc-900;
-  @apply text-zinc-900 dark:text-zinc-100;
-}
-
-header {
-  @apply fixed top-0 left-0 right-0 z-50 py-5;
-  @apply bg-zinc-100/75 dark:bg-zinc-900/25;
-  @apply backdrop-blur-sm saturate-200;
+  @apply bg-accent-yellow dark:bg-zinc-900;
+  @apply text-neutral-black dark:text-zinc-100;
 }
 
 main {
@@ -60,7 +54,7 @@ article {
 }
 
 p {
-  @apply text-zinc-900/80 dark:text-zinc-100/80
+  @apply text-neutral-black/80 dark:text-zinc-100/80
 }
 
 @layer utilities {
@@ -77,6 +71,11 @@ p {
 
 .animate {
   @apply opacity-0 origin-bottom;
+}
+
+.brutalism {
+  box-shadow: 0.5rem 0.5rem black;
+  border: 3px solid black;
 }
 
 html #back-to-top {

@@ -4,11 +4,11 @@ import Link from "@components/Link.astro";
 import { SITE } from "@consts";
 ---
 
-<header>
+<header class="fixed top-4 w-full z-10">
   <Container>
-    <div class="flex flex-wrap gap-y-2 justify-between">
+    <div class="flex flex-wrap justify-between bg-neutral-white p-4 rounded-md w-full brutalism items-baseline">
       <Link href="/" underline={false}>
-        <div class="font-semibold">
+        <div class="font-title text-xl leading-4">
           {SITE.NAME}
         </div>
       </Link>
@@ -17,7 +17,7 @@ import { SITE } from "@consts";
           blog
         </Link>
         <span>
-          {`/`}
+          {"/"}
         </span>
         <Link href="/projects">
           projects

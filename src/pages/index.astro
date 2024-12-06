@@ -20,9 +20,14 @@ const projects = (await getCollection("projects"))
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
-    <h1 class="animate font-title text-6xl leading-[0.8] text-black dark:text-white">
-    Blog Buat yg Lagi Cari Angin Segar
-    </h1>
+    <div class="flex flex-col gap-6">
+      <span class="subtitle w-max">
+        Selamat Datang
+      </span>
+      <h1 class="animate font-title text-6xl leading-[0.8]">
+        Blog Buat yg Lagi Cari Angin Segar
+      </h1>
+    </div>
     <div class="space-y-16">
       <section>
         <article class="space-y-4">
@@ -36,7 +41,7 @@ const projects = (await getCollection("projects"))
 
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h2 class="font-semibold text-black dark:text-white">
+          <h2 class="subtitle">
             Postingan terbaru
           </h2>
           <Link href="/blog">
@@ -54,7 +59,7 @@ const projects = (await getCollection("projects"))
 
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h2 class="font-semibold text-black dark:text-white">
+          <h2 class="subtitle">
             Project terbaru
           </h2>
           <Link href="/projects">
@@ -71,7 +76,7 @@ const projects = (await getCollection("projects"))
       </section>
 
       <section class="animate space-y-4">
-        <h2 class="font-semibold text-black dark:text-white">
+        <h2 class="subtitle w-max">
           Ayo temenan
         </h2>
         <article>

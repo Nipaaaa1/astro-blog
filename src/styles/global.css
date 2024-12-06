@@ -67,16 +67,22 @@ p {
     @apply text-black dark:text-white;
     @apply decoration-zinc-950/25 dark:decoration-zinc-50/50;
   }
+
+
+.brutalism {
+  box-shadow: 0.3rem 0.3rem #1e1e1e;
+  border: 3px solid #1e1e1e;
+}
+}
+
+.subtitle {
+  @apply brutalism bg-primary font-semibold rounded-md py-2 px-3;
 }
 
 .animate {
   @apply opacity-0 origin-bottom;
 }
 
-.brutalism {
-  box-shadow: 0.5rem 0.5rem black;
-  border: 3px solid black;
-}
 
 html #back-to-top {
   @apply opacity-0 pointer-events-none;

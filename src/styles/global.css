@@ -68,11 +68,14 @@ p {
     @apply decoration-zinc-950/25 dark:decoration-zinc-50/50;
   }
 
+  .animate {
+    @apply opacity-0 origin-bottom;
+  }
 
-.brutalism {
-  box-shadow: 0.3rem 0.3rem #1e1e1e;
-  border: 3px solid #1e1e1e;
-}
+  .brutalism {
+    box-shadow: 0.3rem 0.3rem #1e1e1e;
+    border: 3px solid #1e1e1e;
+  }
   .brutalism-border {
     border: 3px solid #1e1e1e;;
   }
@@ -85,11 +88,6 @@ p {
 .social-link {
   @apply brutalism bg-secondary font-semibold rounded-md py-2 px-3 text-sm;
 }
-
-.animate {
-  @apply opacity-0 origin-bottom;
-}
-
 
 html #back-to-top {
   @apply opacity-0 pointer-events-none;

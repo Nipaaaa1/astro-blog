@@ -36,7 +36,7 @@ const { Content } = await render(post)
         </span>
         &bull;
         <span class="font-base text-sm">
-          {readingTime(post.body)}
+          {readingTime(post.body as string)}
         </span>
       </div>
       <h1 class="animate text-2xl font-semibold text-black dark:text-white">

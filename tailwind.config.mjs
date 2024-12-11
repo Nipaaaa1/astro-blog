@@ -14,15 +14,30 @@ export default {
         title: ["BoldGroove", ...defaultTheme.fontFamily.serif]
       },
       colors: {
-        primary: '#FFA89A',
-        secondary: '#ABE5BC',
+        primary: {
+          DEFAULT: '#FFA89A', 
+          dark: '#D97B70',  
+        },
+        secondary: {
+          DEFAULT: '#ABE5BC', 
+          dark: '#83C49B',   
+        },
         accent: {
-          yellow: '#FFD787',
-          violet: '#CFADE8',
-          orange: '#FFA776',
+          yellow: {
+            DEFAULT: '#FFD787', 
+            dark: '#D4B464',   
+          },
+          violet: {
+            DEFAULT: '#CFADE8',
+            dark: '#A27FB5',   
+          },
+          orange: {
+            DEFAULT: '#FFA776', 
+            dark: '#D17A54',   
+          },
         },
         neutral: {
-          white: '#FFFAF0',
+          white: '#FFFAF0', 
           gray: '#505050',
           black: '#1E1E1E',
         },

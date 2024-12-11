@@ -35,7 +35,7 @@ body {
 body {
   @apply font-sans antialiased;
   @apply flex flex-col;
-  @apply bg-accent-yellow dark:bg-neutral-gray;
+  @apply bg-accent-yellow dark:bg-neutral-black;
   @apply text-neutral-black dark:text-neutral-white;
 }
 
@@ -83,11 +83,11 @@ p {
 }
 
 .subtitle {
-  @apply relative brutalism-border bg-primary  font-semibold rounded-md py-2 px-3;
+  @apply relative brutalism-border bg-primary dark:bg-primary-dark  font-semibold rounded-md py-2 px-3;
 }
 
 .social-link {
-  @apply brutalism bg-secondary font-semibold rounded-md py-2 px-3 text-sm;
+  @apply brutalism bg-secondary dark:bg-secondary-dark font-semibold rounded-md py-2 px-3 text-sm;
 }
 
 html #back-to-top {

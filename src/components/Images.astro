@@ -16,6 +16,8 @@ const manipulateCloudinaryUrl = (url: string): string => {
   if (uploadIndex === -1) throw new Error('Invalid URL');
   return url.slice(0, uploadIndex + 8) + 'f_avif/' + url.slice(uploadIndex + 8);
 }
+
+const isProd = import.meta.env.PROD
 ---
 
-<Image src={manipulateCloudinaryUrl(src)} alt={alt} class={cn(['rounded-md', fill ? 'w-full' : ''])} loading={loading} fetchpriority={loading === 'eager' ? 'high' : 'auto'} inferSize />
+<Image src={isProd ? manipulateCloudinaryUrl(src) : "/placeholder.jpg"} alt={alt} class={cn(['rounded-md', fill ? 'w-full' : ''])} loading={loading} fetchpriority={loading === 'eager' ? 'high' : 'auto'} width={480} height={270} inferSize />

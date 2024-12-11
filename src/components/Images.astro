@@ -20,4 +20,4 @@ const manipulateCloudinaryUrl = (url: string): string => {
 const isProd = import.meta.env.PROD
 ---
 
-<Image src={isProd ? manipulateCloudinaryUrl(src) : "/placeholder.jpg"} alt={alt} class={cn(['rounded-md', fill ? 'w-full' : ''])} loading={loading} fetchpriority={loading === 'eager' ? 'high' : 'auto'} width={480} height={270} inferSize />
+<Image src={isProd ? manipulateCloudinaryUrl(src) : "/placeholder.jpg"} alt={alt} class={cn(['rounded-md brutalism', fill && 'w-full'])} loading={loading} fetchpriority={loading === 'eager' ? 'high' : 'auto'} width={480} height={270} inferSize />

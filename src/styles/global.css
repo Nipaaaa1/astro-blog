@@ -35,8 +35,8 @@ body {
 body {
   @apply font-sans antialiased;
   @apply flex flex-col;
-  @apply bg-accent-yellow dark:bg-zinc-900;
-  @apply text-neutral-black dark:text-zinc-100;
+  @apply bg-accent-yellow dark:bg-neutral-gray;
+  @apply text-neutral-black dark:text-neutral-white;
 }
 
 main {
@@ -54,7 +54,7 @@ article {
 }
 
 p {
-  @apply text-neutral-black/80 dark:text-zinc-100/80
+  @apply text-neutral-gray dark:text-neutral-white/80;
 }
 
 @layer utilities {
@@ -75,14 +75,15 @@ p {
   .brutalism {
     box-shadow: 0.3rem 0.3rem #1e1e1e;
     border: 3px solid #1e1e1e;
+    @apply dark:shadow-none dark:text-neutral-white;
   }
   .brutalism-border {
-    border: 3px solid #1e1e1e;;
+    border: 3px solid #1e1e1e;
   }
 }
 
 .subtitle {
-  @apply brutalism-border bg-primary font-semibold rounded-md py-2 px-3;
+  @apply relative brutalism-border bg-primary  font-semibold rounded-md py-2 px-3;
 }
 
 .social-link {

@@ -15,31 +15,31 @@ export default {
       },
       colors: {
         primary: {
-          DEFAULT: '#FFA89A', 
-          dark: '#D97B70',  
+          DEFAULT: "#FFA89A", 
+          dark: "#D97B70",  
         },
         secondary: {
-          DEFAULT: '#ABE5BC', 
-          dark: '#83C49B',   
+          DEFAULT: "#ABE5BC", 
+          dark: "#83C49B",   
         },
         accent: {
           yellow: {
-            DEFAULT: '#FFD787', 
-            dark: '#D4B464',   
+            DEFAULT: "#FFD787", 
+            dark: "#D4B464",   
           },
           violet: {
-            DEFAULT: '#CFADE8',
-            dark: '#A27FB5',   
+            DEFAULT: "#CFADE8",
+            dark: "#A27FB5",   
           },
           orange: {
-            DEFAULT: '#FFA776', 
-            dark: '#D17A54',   
+            DEFAULT: "#FFA776", 
+            dark: "#D17A54",   
           },
         },
         neutral: {
-          white: '#FFFAF0', 
-          gray: '#505050',
-          black: '#1E1E1E',
+          white: "#FFFAF0", 
+          gray: "#505050",
+          black: "#1E1E1E",
         },
       },
     },

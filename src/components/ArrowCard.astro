@@ -1,5 +1,6 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import type { CollectionEntry } from "astro:content"
+import { Icon } from "astro-icon/components"
 
 type Props = {
   entry: CollectionEntry<"blog"> | CollectionEntry<"projects">;
@@ -8,20 +9,17 @@ type Props = {
 const { entry } = Astro.props;
 ---
 
-<a href={`/${entry.collection}/${entry.id}`} class="relative group flex flex-nowrap py-3 px-4 pr-10 rounded-lg brutalism bg-accent-violet dark:bg-accent-violet-dark">
-  <div class="flex flex-col flex-1 max-w-full">
+<div class="relative group flex flex-nowrap justify-between items-center py-3 px-4 pr-10 rounded-lg brutalism bg-neutral-white dark:bg-neutral-gray">
+  <div class="flex flex-col flex-1 w-full">
     <div class="font-semibold truncate">
       {entry.data.title}
     </div>
     <p class="text-xs line-clamp-3">
       {entry.data.description}
     </p>
+    <a href={`/${entry.collection}/${entry.id}`} class="w-max mt-4 text-sm py-2 px-3 rounded-md flex gap-2 items-center brutalism-border bg-accent-violet dark:bg-accent-violet-dark dark:border-none">
+      Baca selengkapnya
+      <Icon name="ph:arrow-right" />
+    </a>
   </div>
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    viewBox="0 0 24 24"
-    class="absolute top-1/2 right-2 -translate-y-1/2 size-5 stroke-2 fill-none stroke-current">
-    <line x1="5" y1="12" x2="19" y2="12" class="translate-x-3 group-hover:translate-x-0 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out" />
-    <polyline points="12 5 19 12 12 19" class="-translate-x-1 group-hover:translate-x-0 transition-transform duration-300 ease-in-out" />
-  </svg>
-</a>
+</div>

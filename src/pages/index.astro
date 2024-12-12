@@ -5,6 +5,7 @@ import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
 import { SITE, HOME, SOCIALS } from "@consts";
 import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
 
 const blog = (await getCollection("blog"))
   .filter(post => !post.data.draft)
@@ -86,13 +87,15 @@ const projects = (await getCollection("projects"))
         </article>
         <ul class="flex flex-wrap gap-3">
           {SOCIALS.map(SOCIAL => (
-            <li class="flex text-nowrap social-link">
+            <li class="flex text-nowrap social-link gap-2 items-center">
+            <Icon name={`ph:${SOCIAL.NAME}-logo`} class="size-5" />
               <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
                 {SOCIAL.NAME}
               </Link>
             </li>
           ))}
-          <li class="line-clamp-1 social-link">
+          <li class="flex items-cnter gap-2 line-clamp-1 social-link">
+            <Icon name="ph:mailbox" class="size-5" />
             <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
               {SITE.EMAIL}
             </Link>

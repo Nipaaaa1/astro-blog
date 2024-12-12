@@ -4,20 +4,20 @@ import { defineCollection, z } from "astro:content";
 const blog = defineCollection({
   loader: glob({
     pattern: "**/*.{md,mdx}",
-    base: "src/content/blog"
+    base: "src/content/blog",
   }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
     thumbnailUrl: z.string(),
     date: z.coerce.date(),
-    draft: z.boolean().optional()
+    draft: z.boolean().optional(),
   }),
 });
 const projects = defineCollection({
   loader: glob({
     pattern: "**/*.{md,mdx}",
-    base: "src/content/projects"
+    base: "src/content/projects",
   }),
   schema: z.object({
     title: z.string(),
@@ -26,7 +26,7 @@ const projects = defineCollection({
     date: z.coerce.date(),
     draft: z.boolean().optional(),
     demoURL: z.string().optional(),
-    repoURL: z.string().optional()
+    repoURL: z.string().optional(),
   }),
 });
 

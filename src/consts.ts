@@ -9,12 +9,13 @@ export const SITE: Site = {
 
 export const HOME: Metadata = {
   TITLE: "Bahas Programming dan Web Development dengan Santai",
-  DESCRIPTION: "SYD blog adalah sebuah blog yg berisi tentang programming dan hal - hal menarik lainnya yg ditulis oleh Devan.",
+  DESCRIPTION:
+    "SYD blog adalah sebuah blog yg berisi tentang programming dan hal - hal menarik lainnya yg ditulis oleh Devan.",
 };
 
 export const ERROR: Metadata = {
   TITLE: "404 Page Not Found",
-  DESCRIPTION: "Maaf, halaman yg kamu cari gk ada di blog ini."
+  DESCRIPTION: "Maaf, halaman yg kamu cari gk ada di blog ini.",
 };
 
 export const BLOG: Metadata = {
@@ -28,16 +29,16 @@ export const PROJECTS: Metadata = {
 };
 
 export const SOCIALS: Socials = [
-  { 
+  {
     NAME: "x",
     HREF: "https://x.com/Nipaaaa1b",
   },
-  { 
+  {
     NAME: "github",
-    HREF: "https://github.com/Nipaaaa1"
+    HREF: "https://github.com/Nipaaaa1",
   },
-  { 
+  {
     NAME: "linkedin",
     HREF: "https://www.linkedin.com/in/devan-sayidina-52586a30a",
-  }
+  },
 ];

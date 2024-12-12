@@ -1,0 +1,31 @@
+# Ignore node_modules
+node_modules/
+
+# Ignore built files
+dist/
+build/
+.astro/
+
+# Ignore environment files
+.env
+.env.*  
+
+# Ignore output files
+output/
+*.log
+
+# Ignore lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Ignore Astro files that don't need formatting
+astro.config.mjs
+astro.config.ts
+
+# Ignore specific folders
+public/
+static/
+
+# Ignore all JSON files (if needed)
+*.json

@@ -10,27 +10,31 @@ Banyak banget developer sekarang yg udah mulai pindah dari JavaScript ke TypeScr
 TypeScript itu sebuah _transpiled language_ atau sebuah bahasa pemrograman yang hasilnya di ubah kebahasa pemrograman lainnya. Nah TypeScript ini bisa kamu anggap sebagai JavaScript tapi dengan _types_ seperti `string`, `number`, `boolean`, dan seterusnya. Dan sebenarnya, itu aja yg bedain antara TypeScript dengan JavaScript.
 
 ---
+
 ## Perbedaan TypeScript sama JavaScript
+
 Biar lebih jelas coba lihat sebuah contoh kode di JavaScript ini:
+
 ```js
-let nama = 'Udin'
+let nama = "Udin";
 
 function selamatPagi(nama) {
-	console.log(`Hi ${nama}, Selamat Pagi!`)
+  console.log(`Hi ${nama}, Selamat Pagi!`);
 }
 
-selamatPagi(nama)
+selamatPagi(nama);
 ```
 
 Dan ini adalah kode yg sama, tapi dengan TypeScript:
+
 ```ts
-let nama: string = 'Udin'
+let nama: string = "Udin";
 
 function selamatPagi(nama: string) {
-	console.log(`Hi ${nama}, Selamat Pagi!`)
+  console.log(`Hi ${nama}, Selamat Pagi!`);
 }
 
-selamatPagi(nama)
+selamatPagi(nama);
 ```
 
 Mungkin pas kamu lihat ini, kamu sadar kalau bedanya TypeScript sama JavaScript cuman di variabel _nama_ yg ditambah `: string`. Dan kamu juga harusnya udah tau fungsinya buat apa, yaitu buat variabel _nama_ jadi punya _string_ types.
@@ -38,44 +42,49 @@ Mungkin pas kamu lihat ini, kamu sadar kalau bedanya TypeScript sama JavaScript 
 Terus, _apa fungsinya? masa itu doang?_ Ya, emang di contoh ini gk kelihatan jelas. Tapi, TypeScript bisa bikin kode kamu lebih _type safe_.
 
 ---
+
 ## Alasan kenapa TypeScript disukai
+
 Sekarang kita lihat contoh kode yg lain. Disini, aku mau bikin sebuah function yg bisa kasih ucapan selamat pagi atau selamat malam. Kira-kira gini kodenya:
+
 ```js
-let nama = 'Udin'
+let nama = "Udin";
 
 function selamat(type, nama) {
-	if(type === 'pagi') {
-		console.log(`Hi ${nama}, Selamat Pagi!`)
-	} else if(type === 'malam') {
-		console.log(`Dadah ${nama}, Selamat Malam~`)
-	}
+  if (type === "pagi") {
+    console.log(`Hi ${nama}, Selamat Pagi!`);
+  } else if (type === "malam") {
+    console.log(`Dadah ${nama}, Selamat Malam~`);
+  }
 }
 
-selamat('pagi', nama)
-selamat('malam', nama)
+selamat("pagi", nama);
+selamat("malam", nama);
 ```
 
 Walaupun kode diatas kelihatan oke-oke aja, tapi kode diatas punya _kelemahan_. Misalnya, pas kamu panggil:
+
 ```js
-selamat('pag', nama)
+selamat("pag", nama);
 ```
 
 Kodenya gk bakal jalan. Kamu bisa tambahin `else` buat kasih tau kalau argumen type-nya salah, tapi _lebih enak lagi kalau code editor yg kasih tau secara otomatis kan?_
 
 Nah, ini yg bikin TypeScript disukai, yaitu bikin kode kamu lebih _type safe_. Sekarang lihat kodenya tapi dalam TypeScript:
-```ts
-let nama: string = 'Udin'
 
-function selamat(type: 'pagi' | 'malam', nama: string) {
-	if(type === 'pagi') {
-		console.log(`Hi ${nama}, Selamat Pagi!`)
-	} else if(type === 'malam') {
-		console.log(`Dadah ${nama}, Selamat Malam~`)
-	}
+```ts
+let nama: string = "Udin";
+
+function selamat(type: "pagi" | "malam", nama: string) {
+  if (type === "pagi") {
+    console.log(`Hi ${nama}, Selamat Pagi!`);
+  } else if (type === "malam") {
+    console.log(`Dadah ${nama}, Selamat Malam~`);
+  }
 }
 
-selamat('pagi', nama)
-selamat('malam', nama)
+selamat("pagi", nama);
+selamat("malam", nama);
 ```
 
 Sekarang, kalau kamu panggil `selamat('pag', nama)`, TypeScript bakal _ngambek_ dan kasih tau kalau _'pag'_ itu bukan argumen yg valid.
@@ -85,7 +94,9 @@ Ini ngebantu banget karena programmer kadang suka _typo_ dan akhirnya ngehabisin
 Bukan itu aja, dengan TypeScript, kamu bakal dapet _code intellisense_ yg bisa bantu kamu ngasih tau apa argumen yg valid ke sebuah function, apa aja property yg ada di dalam object, dan sebagainya. Bener-bener memudahkan developer lah.
 
 ---
+
 ## 'TypeScript cuman nambah kode aja'
+
 Ini adalah salah satu argumen yg valid dan alasan kenapa ada orang yg gk suka sama TypeScript. TypeScript pada dasarnya gk nambah fitur apapun ke JavaScript. Gk ada ceritanya sebuah program yg bisa ditulis pake TypeScript tapi gk bisa ditulis pake JavaScript.
 
 TypeScript sangat bergantung pada _types_. Ini bikin developer kadang nulis kode yg _'gk berguna'_ cuman buat bikin TypeScript gk ngeluarin error lagi. Contohnya seperti kode ucapan selamat pagi diatas. Kalau kamu perhatiin, sebenernya kode itu aman-aman aja buat dipake, bahkan tanpa TypeScript. Penambahan _types_ diatas cuman ditulis biar TypeScript gk ngeluarin error aja pas kamu lagi ngoding.
@@ -93,4 +104,5 @@ TypeScript sangat bergantung pada _types_. Ini bikin developer kadang nulis kode
 Tapi, TypeScript bisa bantu bikin kode kamu punya lebih sedikit error saat runtime, ini karena beberapa error yg bisa terjadi udah di tanganin sama TypeScript. TypeScript juga bisa bikin kode kamu lebih konsisten, ini bisa bikin orang lain lebih nyaman pas lihat kode kamu. Apalagi kalau kode kamu di pakai sama orang lain, TypeScript bisa bikin intellisense yg sangat membantu pengguna kode kamu.
 
 ---
+
 Ya mungkin segitu aja dulu untuk perkenalan TypeScript. Ini adalah artikel pertama dari seri TypeScript 101, di artikel selanjutnya, akan ada pembahasan tentang dasar-dasar _types_ di TypeScript dan bagaimana cara setup TypeScript di sebuah aplikasi Node JS. Jadi, tungguin artikel selanjutnya ya!

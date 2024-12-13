@@ -1,0 +1,99 @@
+---
+title: "Types dalam TypeScript"
+description: "Setelah kemarin kenalan sama TypeScript, di artikel ini kamu akan kenalan sama types di TypeScript, apa aja perbedaannya dan apa fungsinya."
+thumbnailUrl: "https://res.cloudinary.com/dpd0rgmco/image/upload/v1733064092/blog/04-mengenal-git-rebase-dan-squash/20241201_164420_omcogp.jpg"
+date: "Dec 13 2024"
+---
+
+Setelah kemarin kenalan sama TypeScript, di artikel ini kamu akan kenalan sama _types_ di TypeScript, apa aja perbedaannya dan apa fungsinya.
+
+> Oh ya, ini adalah artikel kedua dari _TypeScript 101_, jadi kalau kamu belum baca artikel sebelumnya, kamu bisa [baca artikel sebelumnya disini.](/blog/berkenalan-dengan-typescript)
+
+Mulai dari yg mungkin udah kamu kenal, di TypeScript ada type _string, number, boolean, array, any, unknown, void dan never_. Aku yakin kamu udah tau artinya beberapa type tadi, tapi mungkin agak asing sama sisanya. Jadi penjelasan soal 4 type yg pertama bakal aku cepetin aja.
+
+## String, Number, Boolean dan Array
+Ini simpel, string seperti namanya adalah type yg bisa menerima karakter di TypeScript, number juga sama yaitu menerima angka, boolean menerima value _true / false_ dan array bisa menerima kumpulan dari beberapa type tadi. Contoh penggunaan nya gini:
+
+```ts
+const nama: string = "Udin"
+const umur: number = 20
+const programmer: boolean = true
+const hobi: string[] = ["Ngoding", "Main Game"]
+```
+
+Nah, khusus yg array itu pake syntax `<type>[]`. Jadi kalau kamu pengen bikin array dari number, ya nulisnya `number[]`. Kalau masih kurang jelas, ini penjelasan tentang semua type tadi pake gambar:
+
+TODO: BUAT GAMBAR PENJELASAN TYPE STRING, NUMBER, BOOLEAN DAN ARRAY.
+
+Kayaknya ini udah cukup buat perkenalan types yg sering kamu pake, jadi sekarang saatnya belajar tentang _any_.
+
+## Any, Type yg Sebaiknya Dihindari
+`any` adalah salah satu type yg _sebaiknya dihindari_ pas nulis TypeScript. Kenapa gitu?
+
+Pada dasarnya, `any` ngebuat TypeScript gk ngecek variabel itu. Jadi, kamu bisa ngelakuin apa aja ke variabel itu, bahkan kalau harusnya gk bisa dan ngasih error. Contohnya gini:
+
+```ts
+const angka1: number = 10
+const angka2: any = 16
+
+angka1.toUppecCase() // Ini bakal Error karena TypeScript tau kalau gk ada toUpperCase() di dalam type "number"
+
+angka2.toUpperCase() // Ini gk bakal Error karena TypeScript gk tau angka2 adalah type "number" dan nganggep kalau toUpperCase() itu ada.
+```
+
+Nah yg terjadi disini tuh, TypeScript ngeliat kalau angka1 nyoba buat manggil `toUpperCase()` dan ngasih Error karena `toUpperCase()` itu gk ada di type `number` setelah dicek sama TypeScript. Tapi di angka2, TypeScript ngebolehin itu karena variabel angka2 itu punya type `any` yg artinya bikin TypeScript gk ngecek variabel itu. Jadi kalau kamu manggil `angka2.nama` juga pasti gk bakal ada Error dari TypeScript (walaupun pas runtime, pasti hasilnya `undefined`).
+
+Tapi, kadang kita emang butuh type kayak `any`, contohnya pas mau bikin function yg tipe argumennya gk diketahui. Nah, disinilah `unknown` muncul.
+
+## Unknown, Pengganti Any yg Lebih Type Safe
+Simpelnya, `unknown` itu mirip kayak `any` yaitu bisa nerima value dengan type apapun, perbedaannya adalah _variabel dengan type`unknown` gk bisa ngelakuin apapun, selama belum dilakukan **Type Narrowing**_.
+
+> **Type Narrowing** adalah salah satu teknik di TypeScript untuk membuat type suatu variabel menjadi lebih spesifik.
+
+Coba lihat contoh ini:
+
+```ts
+const nama: unknown = "Udin"
+
+name.toUpperCase() // Ini bakal Error, karena belum ada Type Narrowing
+
+// Kita akan ngelakuin Type Narrowing dengan ngecek apakah value dari nama itu sesuai dengan type string
+if(typeof nama === "string") {
+	console.log(nama.toUpperCase()) // Ini gk bakal Error, karena udah Type Narrowing.
+}
+```
+
+Disini, variabel nama punya type `unknown` dan bisa dikasih value apapun, tapi kamu gk bisa pake variabel nama sebelum ngelakuin _Type Narrowing_, setelah kamu udah pastiin kalau nama itu punya type `string`, barulah kamu bisa pake method `toUpperCase()`.
+
+Dengan `unknown` kamu masih bisa nerima semua value dan tetep dapet type safety gk kayak `any`.
+
+## Void dan Never di TypeScript
+`void` dan `never` bisa dibilang agak unik, karena mereka berdua jarang banget kepake dan kesannya agak _useless_, walaupun tetep ada kasus dimana void dan never ini bisa berguna.
+
+Langsung aja, `void` adalah sebuah type yg menandakan kalau sebuah _function_ itu gk me-_return_ apapun. `void` nyaris cuman dipakai pas kamu bikin function doang. Ini karena gk ada gunanya buat ngasih type `void` ke variabel. Ini contoh penggunaan nya:
+
+```ts
+function ucapSelamatPagi(nama: string): void {
+	console.log("Selamat pagi " + nama)
+}
+
+ucapSelamatPagi("Udin")
+```
+
+Kamu bisa lihat kalau _function_ `ucapSelamatPagi()` gk me-_return_ apapun dan hanya ngelakuin `console.log()` aja. Kalau kamu coba buat me-_return_ sesuatu di _function_ nya, maka TypeScript akan ngasih kamu error karena type `void` itu gk boleh me-_return_ sesuatu.
+
+Type `never` sedikit lebih tricky buat dipake dan mungkin agak susah dimengerti, tapi intinya, type never berfungsi buat ngasih tau kalau sebuah _function_ itu gk pernah selesai atau selalu melempar error, contohnya gini:
+
+```ts
+function selaluError(message: string): never {
+	throw new Error(message)
+}
+
+selaluError("Ini Error")
+```
+
+Disini, `selaluError()` akan selalu melempar error yg membuat _function_ nya gk pernah selesai. Ini adalah tempat yg pas buat ngasih type `never`. Kalau menurutmu masih susah dimengerti, tenang aja, `never` jarang banget kepake dan kamu harusnya udah cukup jago di TypeScript kalau sampai ketemu kasus dimana kamu harus pake `never`.
+
+---
+
+Oke, mungkin segitu aja dulu. Aku niatnya pengen kasih penjelasan juga tentang object, tapi kayaknya itu bisa dibahas di artikel selanjutnya. Kalau kamu suka sama artikel ini, kamu bisa share ke temen kamu yg mungkin pengen belajar TypeScript. Sampai ketemu di artikel selanjutnya!

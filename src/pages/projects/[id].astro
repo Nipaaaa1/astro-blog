@@ -30,36 +30,39 @@ const { Content } = await render(project);
         Back to projects
       </BackToPrev>
     </div>
-    <div class="space-y-1 my-10">
-      <div class="animate flex items-center gap-1.5">
-        <div class="font-base text-sm">
-          <FormattedDate date={project.data.date} />
+    <div class="flex flex-col gap-1 my-10">
+      <div class="flex gap-2">
+        <div class="animate flex items-center gap-1.5">
+          <div class="font-base text-sm">
+            <FormattedDate date={project.data.date} />
+          </div>
+          &bull;
+          <div class="font-base text-sm">
+            {readingTime(project.body as string)}
+          </div>
         </div>
-        &bull;
-        <div class="font-base text-sm">
-          {readingTime(project.body as string)}
+        |
+        {(project.data.demoURL || project.data.repoURL) && (
+          <nav class="animate flex gap-1">
+            {project.data.demoURL && (
+              <Link href={project.data.demoURL} external>
+                demo
+              </Link>
+            )}
+            {project.data.demoURL && project.data.repoURL && (
+              <span>/</span>
+            )}
+            {project.data.repoURL && (
+              <Link href={project.data.repoURL} external>
+                repo
+              </Link>
+            )}
+          </nav>
+          )}
         </div>
-      </div>
-      <div class="animate text-2xl font-semibold text-black dark:text-white">
+      <h1 class="animate text-6xl font-title leading-[0.8] text-neutral-black dark:text-neutral-white">
         {project.data.title}
-      </div>
-      {(project.data.demoURL || project.data.repoURL) && (
-        <nav class="animate flex gap-1">
-          {project.data.demoURL && (
-            <Link href={project.data.demoURL} external>
-              demo
-            </Link>
-          )}
-          {project.data.demoURL && project.data.repoURL && (
-            <span>/</span>
-          )}
-          {project.data.repoURL && (
-            <Link href={project.data.repoURL} external>
-              repo
-            </Link>
-          )}
-        </nav>
-      )}
+      </h1>
     </div>
     <article class="animate">
       <Images src={project.data.thumbnailUrl} alt='' loading='eager' fill />

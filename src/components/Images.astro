@@ -11,13 +11,7 @@ interface Props {
 
 const { src, alt, fill, loading = "lazy" } = Astro.props;
 
-const manipulateCloudinaryUrl = (url: string): string => {
-  const uploadIndex = url.indexOf("/upload/");
-  if (uploadIndex === -1) throw new Error("Invalid URL");
-  return url.slice(0, uploadIndex + 8) + "f_webp/" + url.slice(uploadIndex + 8);
-};
-
 const isProd = import.meta.env.PROD;
 ---
 
-<Image src={isProd ? manipulateCloudinaryUrl(src) : "/placeholder.jpg"} alt={alt} class={cn(["rounded-md brutalism", fill && "w-full"])} loading={loading} fetchpriority={loading === "eager" ? "high" : "auto"} width={480} height={270} inferSize />
+<Image src={isProd ? src : "/placeholder.jpg"} alt={alt} class={cn(["rounded-md brutalism", fill && "w-full"])} loading={loading} fetchpriority={loading === "eager" ? "high" : "auto"} width={480} height={270} inferSize />

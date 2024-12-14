@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "dev:network": "astro dev --host",
+    "dev:prod": "NODE_ENV=production astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "preview:network": "astro preview --host",

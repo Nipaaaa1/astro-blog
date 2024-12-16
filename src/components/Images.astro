@@ -1,17 +1,17 @@
 ---
+import { cn } from "@lib/utils";
 import { Image } from "astro:assets";
-import { cn } from "../lib/utils";
 
 interface Props {
   src: string
   alt: string
-  fill: boolean
-  loading: "eager" | "lazy"
+  loading?: "eager" | "lazy"
+  className?: string
 }
 
-const { src, alt, fill, loading = "lazy" } = Astro.props;
+const { src, alt, loading = "lazy", className = "" } = Astro.props;
 
 const isProd = import.meta.env.PROD;
 ---
 
-<Image src={isProd ? src : "/placeholder.jpg"} alt={alt} class={cn(["rounded-md brutalism", fill && "w-full"])} loading={loading} fetchpriority={loading === "eager" ? "high" : "auto"} width={480} height={270} inferSize />
+<Image transition:persist src={isProd ? src : "/placeholder.jpg"} alt={alt} class={cn(["rounded-md brutalism w-full", className])} loading={loading} fetchpriority={loading === "eager" ? "high" : "auto"} width={480} height={270} inferSize />

@@ -3,14 +3,13 @@ import PageLayout from "@layouts/PageLayout.astro";
 import { ERROR } from "@consts";
 import Container from "@components/Container.astro";
 import BackToPrev from "@components/BackToPrev.astro";
+import PageTitle from "@components/PageTitle.astro";
 ---
 
 <PageLayout title={ERROR.TITLE} description={ERROR.DESCRIPTION}>
   <Container>
     <div class="space-y-4">
-    <h1 class="animate font-semibold">
-      Ups, kayaknya halaman yg kamu cari gk ada deh...
-    </h1>
+    <PageTitle label="Halaman yg kamu cari gk ketemu." />
     <p class="animate text-sm">
       Tenang aja, aku bisa kembaliin kamu ke halaman depan
     </p>

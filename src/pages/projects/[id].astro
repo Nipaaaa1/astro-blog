@@ -2,11 +2,11 @@
 import { type CollectionEntry, getCollection, render } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
-import FormattedDate from "@components/FormattedDate.astro";
-import { readingTime } from "@lib/utils";
 import BackToPrev from "@components/BackToPrev.astro";
 import Link from "@components/Link.astro";
 import ArticleContent from "@components/ArticleContent.astro"
+import ArticleInfo from "@components/ArticleInfo.astro"
+import PageTitle from "@components/PageTitle.astro";
 
 export async function getStaticPaths() {
   const projects = (await getCollection("projects"))
@@ -32,15 +32,7 @@ const { Content } = await render(project);
     </div>
     <div class="flex flex-col gap-1 my-10">
       <div class="flex gap-2">
-        <div class="animate flex items-center gap-1.5">
-          <div class="font-base text-sm">
-            <FormattedDate date={project.data.date} />
-          </div>
-          &bull;
-          <div class="font-base text-sm">
-            {readingTime(project.body as string)}
-          </div>
-        </div>
+        <ArticleInfo date={project.data.date} body={project.body as string} /> 
         |
         {(project.data.demoURL || project.data.repoURL) && (
           <nav class="animate flex gap-1">
@@ -59,10 +51,8 @@ const { Content } = await render(project);
             )}
           </nav>
           )}
-        </div>
-      <h1 class="animate text-6xl font-title leading-[0.8] text-neutral-black dark:text-neutral-white">
-        {project.data.title}
-      </h1>
+      </div>
+      <PageTitle label={project.data.title} />
     </div>
     <ArticleContent thumbnailSrc={project.data.thumbnailUrl}>
       <Content />

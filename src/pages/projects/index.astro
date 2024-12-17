@@ -4,6 +4,7 @@ import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import { PROJECTS } from "@consts";
+import PageTitle from "@components/PageTitle.astro";
 
 const projects = (await getCollection("projects"))
   .filter(project => !project.data.draft)
@@ -13,9 +14,7 @@ const projects = (await getCollection("projects"))
 <PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
   <Container>
     <div class="space-y-10">
-      <h1 class="animate font-title text-6xl">
-        Projects
-      </h1>
+      <PageTitle label="Project" />
       <ul class="animate flex flex-col gap-4">
         {
           projects.map((project) => (

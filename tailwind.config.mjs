@@ -40,6 +40,9 @@ export default {
           black: "#1E1E1E",
         },
       },
+      lineHeight: {
+        title: 0.8
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],

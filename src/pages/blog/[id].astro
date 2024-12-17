@@ -24,11 +24,7 @@ const { Content } = await render(post);
 
 <PageLayout title={post.data.title} description={post.data.description} image={post.data.thumbnailUrl}>
   <Container>
-    <div class="animate">
-      <BackToPrev href="/blog">
-        Back to blog
-      </BackToPrev>
-    </div>
+    <BackToPrev href="/blog" label="Back to Blog" />
     <div class="space-y-1 my-10">
       <ArticleInfo date={post.data.date} body={post.body as string} />
       <PageTitle label={post.data.title} />

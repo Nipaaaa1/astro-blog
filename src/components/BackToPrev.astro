@@ -3,14 +3,15 @@ import { Icon } from "astro-icon/components";
 
 type Props = {
   href: string;
+  label: string
 }
 
-const { href } = Astro.props;
+const { href, label } = Astro.props;
 ---
  
 <a href={href} class="animate relative group w-max flex items-center gap-2 py-2 px-3 flex-nowrap rounded-md brutalism bg-secondary dark:bg-secondary-dark">
   <Icon name="ph:arrow-left" />
   <div class="text-sm">
-    <slot/>
+    {label}
   </div>
 </a>

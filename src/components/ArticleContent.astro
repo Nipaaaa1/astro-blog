@@ -1,0 +1,13 @@
+---
+import Images from "./Images.astro"
+type Props = {
+  thumbnailSrc: string
+}
+
+const { thumbnailSrc } = Astro.props
+---
+
+<article class="animate">
+  <Images src={thumbnailSrc} alt="" loading="eager" />
+  <slot />
+</article>

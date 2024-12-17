@@ -1,15 +1,20 @@
 import { glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
 
-const cloudinaryUrlSchema = z.string().refine(url => url.includes('cloudinary.com'), {
-  message: 'URL harus berasal dari Cloudinary',
-}).transform(url => {
-  const uploadIndex = url.indexOf('/upload/');
-  if (uploadIndex !== -1) {
-    return url.slice(0, uploadIndex + 8) + 'f_webp/' + url.slice(uploadIndex + 8);
-  }
-  return url;
-});
+const cloudinaryUrlSchema = z
+  .string()
+  .refine((url) => url.includes("cloudinary.com"), {
+    message: "URL harus berasal dari Cloudinary",
+  })
+  .transform((url) => {
+    const uploadIndex = url.indexOf("/upload/");
+    if (uploadIndex !== -1) {
+      return (
+        url.slice(0, uploadIndex + 8) + "f_webp/" + url.slice(uploadIndex + 8)
+      );
+    }
+    return url;
+  });
 
 const blog = defineCollection({
   loader: glob({

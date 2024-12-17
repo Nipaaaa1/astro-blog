@@ -7,7 +7,7 @@ import { PROJECTS } from "@consts";
 import PageTitle from "@components/PageTitle.astro";
 
 const projects = (await getCollection("projects"))
-  .filter(project => !project.data.draft)
+  .filter((project) => !project.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
@@ -19,7 +19,7 @@ const projects = (await getCollection("projects"))
         {
           projects.map((project) => (
             <li>
-              <ArrowCard entry={project}/>
+              <ArrowCard entry={project} />
             </li>
           ))
         }

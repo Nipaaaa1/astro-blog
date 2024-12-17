@@ -9,93 +9,95 @@ import { Icon } from "astro-icon/components";
 import PageTitle from "@components/PageTitle.astro";
 
 const blog = (await getCollection("blog"))
-  .filter(post => !post.data.draft)
+  .filter((post) => !post.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0,SITE.NUM_POSTS_ON_HOMEPAGE);
+  .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
 
 const projects = (await getCollection("projects"))
-  .filter(project => !project.data.draft)
+  .filter((project) => !project.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0,SITE.NUM_PROJECTS_ON_HOMEPAGE);
-
+  .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
 ---
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
     <div class="flex flex-col gap-6">
-      <span class="animate subtitle w-max">
-        Selamat Datang
-      </span>
-      <PageTitle label="Blog buaat yg lagi cari angin segar" /> 
+      <span class="animate subtitle w-max"> Selamat Datang </span>
+      <PageTitle label="Blog buaat yg lagi cari angin segar" />
     </div>
     <div class="space-y-16">
       <section>
         <article class="space-y-4">
           <p class="animate">
-          Di Website ini, aku akan nulis tentang programming, pengalaman hidup atau bahkan hal - hal yang mungkin menarik buat kamu!
-
-          Kalau kamu suka sama website ini kamu bisa follow social mediaku yg lain di bawah atau ceritain ke temen - temen kamu soal website ini!
+            Di Website ini, aku akan nulis tentang programming, pengalaman hidup
+            atau bahkan hal - hal yang mungkin menarik buat kamu! Kalau kamu
+            suka sama website ini kamu bisa follow social mediaku yg lain di
+            bawah atau ceritain ke temen - temen kamu soal website ini!
           </p>
         </article>
       </section>
 
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h2 class="subtitle">
-            Postingan terbaru
-          </h2>
-          <Link href="/blog">
-            Cek postingan paling baru!
-          </Link>
+          <h2 class="subtitle">Postingan terbaru</h2>
+          <Link href="/blog"> Cek postingan paling baru! </Link>
         </div>
         <ul class="flex flex-col gap-4">
-          {blog.map(post => (
-            <li>
-              <ArrowCard entry={post} />
-            </li>
-          ))}
+          {
+            blog.map((post) => (
+              <li>
+                <ArrowCard entry={post} />
+              </li>
+            ))
+          }
         </ul>
       </section>
 
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h2 class="subtitle">
-            Project terbaru
-          </h2>
-          <Link href="/projects">
-            Project menarik yg aku buat!
-          </Link>
+          <h2 class="subtitle">Project terbaru</h2>
+          <Link href="/projects"> Project menarik yg aku buat! </Link>
         </div>
         <ul class="flex flex-col gap-4">
-          {projects.map(project => (
-            <li>
-              <ArrowCard entry={project} />
-            </li>
-          ))}
+          {
+            projects.map((project) => (
+              <li>
+                <ArrowCard entry={project} />
+              </li>
+            ))
+          }
         </ul>
       </section>
 
       <section class="animate space-y-4">
-        <h2 class="subtitle w-max">
-          Ayo temenan
-        </h2>
+        <h2 class="subtitle w-max">Ayo temenan</h2>
         <article>
           <p>
-            Kalau kamu mau kenalan sama aku atau pengen sapa aja, kamu bisa nemuin aku disini!
+            Kalau kamu mau kenalan sama aku atau pengen sapa aja, kamu bisa
+            nemuin aku disini!
           </p>
         </article>
         <ul class="flex flex-wrap gap-3">
-          {SOCIALS.map(SOCIAL => (
-            <li class="flex text-nowrap social-link gap-2 items-center">
-            <Icon name={`ph:${SOCIAL.NAME}-logo`} class="size-5" />
-              <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
-                {SOCIAL.NAME}
-              </Link>
-            </li>
-          ))}
+          {
+            SOCIALS.map((SOCIAL) => (
+              <li class="flex text-nowrap social-link gap-2 items-center">
+                <Icon name={`ph:${SOCIAL.NAME}-logo`} class="size-5" />
+                <Link
+                  href={SOCIAL.HREF}
+                  external
+                  aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}
+                >
+                  {SOCIAL.NAME}
+                </Link>
+              </li>
+            ))
+          }
           <li class="flex items-cnter gap-2 line-clamp-1 social-link">
             <Icon name="ph:mailbox" class="size-5" />
-            <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
+            <Link
+              href={`mailto:${SITE.EMAIL}`}
+              aria-label={`Email ${SITE.NAME}`}
+            >
               {SITE.EMAIL}
             </Link>
           </li>

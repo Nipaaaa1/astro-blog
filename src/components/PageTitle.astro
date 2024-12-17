@@ -1,11 +1,13 @@
 ---
 type Props = {
-  label: string
-}
+  label: string;
+};
 
-const { label } = Astro.props
+const { label } = Astro.props;
 ---
 
-<h1 class="animate text-6xl font-title leading-title text-neutral-black dark:text-neutral-white">
+<h1
+  class="animate text-6xl font-title leading-title text-neutral-black dark:text-neutral-white"
+>
   {label}
 </h1>

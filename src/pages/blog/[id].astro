@@ -5,7 +5,7 @@ import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import { readingTime } from "@lib/utils";
 import BackToPrev from "@components/BackToPrev.astro";
-import Images from "../../components/Images.astro";
+import ArticleContent from "@components/ArticleContent.astro";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("blog"))
@@ -43,9 +43,8 @@ const { Content } = await render(post);
         {post.data.title}
       </h1>
     </div>
-    <article class='animate'>
-      <Images src={post.data.thumbnailUrl} alt='' loading='eager' fill />
+    <ArticleContent thumbnailSrc={post.data.thumbnailUrl}>
       <Content />
-    </article>
+    </ArticleContent>
   </Container>
 </PageLayout>

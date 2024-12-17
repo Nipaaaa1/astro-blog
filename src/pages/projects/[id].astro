@@ -6,7 +6,7 @@ import FormattedDate from "@components/FormattedDate.astro";
 import { readingTime } from "@lib/utils";
 import BackToPrev from "@components/BackToPrev.astro";
 import Link from "@components/Link.astro";
-import Images from "@components/Images.astro";
+import ArticleContent from "@components/ArticleContent.astro"
 
 export async function getStaticPaths() {
   const projects = (await getCollection("projects"))
@@ -64,9 +64,8 @@ const { Content } = await render(project);
         {project.data.title}
       </h1>
     </div>
-    <article class="animate">
-      <Images src={project.data.thumbnailUrl} alt='' loading='eager' fill />
+    <ArticleContent thumbnailSrc={project.data.thumbnailUrl}>
       <Content />
-    </article>
+    </ArticleContent>
   </Container>
 </PageLayout>

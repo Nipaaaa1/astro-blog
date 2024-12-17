@@ -1,20 +1,20 @@
 ---
-import FormattedDate from "./FormattedDate.astro"
-import { readingTime } from "@lib/utils"
+import FormattedDate from "./FormattedDate.astro";
+import { readingTime } from "@lib/utils";
 type Props = {
-  date: Date
-  body: string
-}
+  date: Date;
+  body: string;
+};
 
-const { date, body } = Astro.props
+const { date, body } = Astro.props;
 ---
 
 <div class="animate flex items-center gap-1.5">
-<span class="font-base text-sm">
-<FormattedDate date={date} />
-</span>
-&bull;
-<span class="font-base text-sm">
-{readingTime(body)}
-</span>
+  <span class="font-base text-sm">
+    <FormattedDate date={date} />
+  </span>
+  &bull;
+  <span class="font-base text-sm">
+    {readingTime(body)}
+  </span>
 </div>

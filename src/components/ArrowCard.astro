@@ -1,16 +1,18 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { Icon } from "astro-icon/components"
-import Images from "./Images.astro"
+import { Icon } from "astro-icon/components";
+import Images from "./Images.astro";
 
 type Props = {
   entry: CollectionEntry<"blog"> | CollectionEntry<"projects">;
-}
+};
 
 const { entry } = Astro.props;
 ---
 
-<div class="relative group flex flex-nowrap justify-between items-center py-3 px-4 rounded-lg brutalism bg-neutral-white dark:bg-neutral-gray">
+<div
+  class="relative group flex flex-nowrap justify-between items-center py-3 px-4 rounded-lg brutalism bg-neutral-white dark:bg-neutral-gray"
+>
   <div class="flex flex-col flex-1 w-full">
     <Images src={entry.data.thumbnailUrl} alt="" className="mb-4" />
     <div class="font-semibold truncate">
@@ -19,7 +21,10 @@ const { entry } = Astro.props;
     <p class="text-xs line-clamp-3">
       {entry.data.description}
     </p>
-    <a href={`/${entry.collection}/${entry.id}`} class="w-max mt-4 text-sm py-2 px-3 rounded-md flex gap-2 items-center brutalism-border bg-accent-violet dark:bg-accent-violet-dark dark:border-none">
+    <a
+      href={`/${entry.collection}/${entry.id}`}
+      class="w-max mt-4 text-sm py-2 px-3 rounded-md flex gap-2 items-center brutalism-border bg-accent-violet dark:bg-accent-violet-dark dark:border-none"
+    >
       Baca selengkapnya
       <Icon name="ph:arrow-right" />
     </a>

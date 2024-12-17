@@ -41,7 +41,7 @@ export default {
         },
       },
       lineHeight: {
-        title: 0.8
+        title: 0.8,
       },
     },
   },

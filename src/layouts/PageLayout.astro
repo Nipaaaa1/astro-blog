@@ -7,7 +7,7 @@ import { SITE } from "@consts";
 type Props = {
   title: string;
   description: string;
-  image?: string
+  image?: string;
 };
 
 const { title, description, image = "/syd-blog.jpg" } = Astro.props;
@@ -16,8 +16,12 @@ const { title, description, image = "/syd-blog.jpg" } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
-    <Head title={`${title} | ${SITE.NAME}`} description={description} image={image} />
-   </head>
+    <Head
+      title={`${title} | ${SITE.NAME}`}
+      description={description}
+      image={image}
+    />
+  </head>
   <body>
     <Header />
     <main>
@@ -25,23 +29,25 @@ const { title, description, image = "/syd-blog.jpg" } = Astro.props;
     </main>
     <Footer />
     <script>
-    
-    import { animate, inView, stagger } from "motion";
-    const main = () => { 
-    inView(".animate", el => {
-    animate(el.target, {
-        opacity: 1,
-        y: [20, 0]
-      },
-      {
-        duration: 0.3,
-        delay: stagger(0.15)
+      import { animate, inView, stagger } from "motion";
+      const main = () => {
+        inView(".animate", (el) => {
+          animate(
+            el.target,
+            {
+              opacity: 1,
+              y: [20, 0],
+            },
+            {
+              duration: 0.3,
+              delay: stagger(0.15),
+            },
+          );
         });
-    });
-    };
+      };
 
-    document.addEventListener("DOMContentLoaded", () => main());
-    document.addEventListener("astro:after-swap", () => main());
+      document.addEventListener("DOMContentLoaded", () => main());
+      document.addEventListener("astro:after-swap", () => main());
     </script>
   </body>
 </html>

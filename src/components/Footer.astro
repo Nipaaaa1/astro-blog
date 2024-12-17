@@ -1,10 +1,10 @@
 ---
 import Container from "@components/Container.astro";
 import { SITE } from "@consts";
-import BackToTop from "@components/BackToTop.astro"
+import BackToTop from "@components/BackToTop.astro";
 import { Icon } from "astro-icon/components";
 
-const currentYear = new Date().getFullYear()
+const currentYear = new Date().getFullYear();
 ---
 
 <footer class="animate">
@@ -14,9 +14,13 @@ const currentYear = new Date().getFullYear()
         <BackToTop />
       </div>
     </div>
-    <div class="flex justify-between items-center brutalism rounded-md p-4 bg-accent-orange dark:bg-accent-orange-dark">
+    <div
+      class="flex justify-between items-center brutalism rounded-md p-4 bg-accent-orange dark:bg-accent-orange-dark"
+    >
       <div>
-        &copy; {currentYear} {`|`} {SITE.NAME}
+        &copy; {currentYear}
+        {`|`}
+        {SITE.NAME}
       </div>
       <div class="flex flex-wrap gap-1 items-center">
         <button
@@ -31,14 +35,14 @@ const currentYear = new Date().getFullYear()
           aria-label="Dark theme"
           class="group size-8 flex items-center justify-center rounded-full"
         >
-          <Icon name="ph:moon" class="size-5" /> 
+          <Icon name="ph:moon" class="size-5" />
         </button>
         <button
           id="system-theme-button"
           aria-label="System theme"
           class="group size-8 flex items-center justify-center rounded-full"
         >
-          <Icon name="ph:monitor" class="size-5" /> 
+          <Icon name="ph:monitor" class="size-5" />
         </button>
       </div>
     </div>

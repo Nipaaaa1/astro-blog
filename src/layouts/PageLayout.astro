@@ -22,9 +22,9 @@ const { title, description, image = "/syd-blog.jpg" } = Astro.props;
       image={image}
     />
   </head>
-  <body>
+  <body class="font-sans antialiased bg-accent-yellow dark:bg-neutral-black grid size-full">
     <Header />
-    <main>
+    <main class="my-36">
       <slot />
     </main>
     <Footer />

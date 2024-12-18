@@ -7,7 +7,7 @@ type Props = {
 const { thumbnailSrc } = Astro.props;
 ---
 
-<article class="animate">
+<article class="animate prose-sm md:prose prose-neutral prose-headings:font-bold prose-p:font-serif">
   <Images src={thumbnailSrc} alt="" loading="eager" />
   <slot />
 </article>

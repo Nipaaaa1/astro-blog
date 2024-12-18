@@ -1,0 +1,83 @@
+---
+title: "Pengalaman Pertama Kali Bikin Blog Cuman Modal HP"
+description: "Di project ini, aku belajar banyak banget dalam sebulan ini daripada berbulan - bulan ngerjain project latihan doang, dan aku mau coba bagiin pengalaman itu disini."
+thumbnailUrl: "https://res.cloudinary.com/dpd0rgmco/image/upload/v1734589740/blog/06-pengalaman-pertama-kali-bikin-blog-cuman-modal-hp/20241217_075120_xd0wsj.jpg"
+date: "Dec 18 2024"
+---
+
+Hai, jadi ini adalah series terbaruku yg aku kasih nama "Dev Log", series ini akan menjadi series utama di blog ini dan aku akan usahain tambah artikel baru tiap 1 - 2 minggu sekali disini. Dan di pembukaan kali ini, aku pengen ceritain tentang pengalaman ku bikin blog ini sampai jadi ke production, _cuman modal hp._
+
+Jadi selama beberapa waktu ini aku ngerjain project _SYD Blog_. Blog ini niatnya jadi semacam tempat buat aku bisa share apa yg aku pelajarin soal programming dan sekaligus buat ngasah Skill Web Development. Di project ini, aku belajar banyak banget dalam sebulan ini daripada berbulan - bulan ngerjain project latihan doang, dan aku mau coba bagiin pengalaman itu disini.
+
+## Deployment itu susah
+
+Ini adalah hal yg paling bikin aku kaget, selama aku bikin project latihan, aku cuman asal deploy aja ke vercel dan gk peduli sama hal - hal kecil lainnya. Tapi pas bikin blog ini, ternyata gk bakal se-_happy_ itu. Aku tetep deploy di cloudflare pages yg notabene-nya masih mirip kayak vercel, tapi di production, aku gk bisa asal deploy terus ninggalin website nya gitu aja. Aku perlu setup domain yg ternyata cukup ribet buat pemula, dan karena aku pengen domainnya di manage cloudflare, aku juga harus setup nameserver cloudflarenya.
+
+Belum lagi masalah redirect dan proxy yg bikin aku harus belajar bedanya DNS yg di proxy cloudflare sama yg bukan, juga belajar DNS Record mulai dari A Record sampai CNAME. Ini juga belum termasuk semua masalah yg kadang muncul kayak deploy gagal, kendala pake hp yg bikin dashboard cloudflare berantakan, dsb. Intinya pusing lah, aku salut sama devops yg kerjaannya ngurus deployment yg pasti lebih ribet dari ini.
+
+## Development Workflow yg beda
+
+Di project latihan, aku **hampir selalu develop di main branch**, karena di project latihan aku gk terlalu peduli kalau main branch-nya rusak atau berantakan. Tapi di project ini, **main branch bener - bener aku perlakuin kayak anak sendiri**. Aku sampe punya pakem _gk bakal nyentuh main branch kecuali buat deploy_ saking hati-hatinya biar gk ada masalah serius di project ini, bahkan branch yg aku push ke github aja cuman main doang, karena aku pake rebase di branch lain dan gk mau dapet masalah karena gk sengaja rebase branch yg udah di push.
+
+## Migrate? mungkin maksudnya migrain
+
+Ini kejadian yg unik, jadi pas awal develop ini, aku pake Astro 4 buat develop-nya, tapi ditengah jalan, Astro 5 tiba-tiba keluar dan karena aku pikir "Ah, projectnya masih kecil, mending aku migrate aja ke Astro 5", and let's say I learned why developer don't like migration **the hard way**.
+
+Momen aku selesai upgrade Astro ke versi 5, tiba-tiba kodeku error. Aku udah expect kalau bakal ada error, tapi aku gk expect kalau _error-nya sebanyak ini_. Bahkan di project yg kecil kayak gini, migrate ke Astro 5 bikin TypeScript ku _mati total_, tiba - tiba semua file gk bisa baca import dari alias yg udah di setel, TypeScript teriak bilang kalau beberapa fitur yg aku pake itu deprecated dan aku harus baca migration guide di dokumentasi Astro buat benerin masalah ini.
+
+Yup, gk ada tutorial YouTube yg ngasih tau gimana caranya migrate ke Astro 5 ataupun AI yg bisa nge bantu aku, aku cuman sendirian disini. Untungnya aku lancar bahasa Inggris jadi gk ada masalah pas aku baca dokumentasinya.
+
+## Aku mau minta maaf ke orang SEO
+Aku sendiri termasuk salah satu orang yg _ngeremehin_ SEO karena kupikir itu gk terlalu penting dan cuman nambah beban developer doang. Ya, sekarang aku tau kenapa ada orang yg kerjanya full-time cuman ngurus SEO.
+
+Karena aku juga ngetest blog ini sebagai user, aku jadi tau kalau hal - hal kecil kayak gambar yg muncul pas aku share link websitenya di WhatsApp dengan infomasi websitenya atau bisa akses websitenya lewat rss feed itu bikin aku sebagai user seneng. Aku terlalu berpikir dari sisi developer sampai lupa kalau akhirnya yg nikmatin website itu ya user. Aku juga jadi tau kalau beberapa tools SEO itu punya aturan yg cukup ketat, kayak Google Search Console yg gk mau nerima sitemap websiteku karena domainku yg gk trustworthy (agak sayang sih).
+
+## Trade Off pas ngoding
+
+**Gk semua hal itu harus sejalan sama yg kamu mau**. Kalimat ini bener-bener ngena buatku sekarang, aku harus nurunin ego-ku sebagai developer berkali-kali dan bikin pilihan yg jujur, aku sendiri gk suka.
+
+Contoh pertama itu pas pasang Google Analytics, tepat setelah aku pasang itu di websiteku, skor performa ku turun sampe jadi warna kuning karena script yg dipake itu ngeblocking dan bikin delay blog ku selama beberapa ms. Aku harus nyerah dan gk bebal kayak biasanya soal skor ini karena Analytics dari Google itu lebih akurat daripada Analytics dari Cloudflare.
+
+Untungnya, sekarang aku udah offload Analytics nya ke Zaraz, jadi performa websiteku naik lagi.
+
+Ada juga soal webp dan avif, dimana aku pengen banget pake avif buat gambar karena hasil kompresinya lebih bagus daripada webp, tapi aku harus ngalah lagi dan ganti ke webp karena walaupun avif juga punya support yg kurang lebih sama kayak webp di browser, avif punya support terbatas diluar itu, sampai rss readerku gk bisa nampilin gambar avif karena belum di support.
+
+Jujur aja, masalah Image ini gk selesai sampe disitu. Karena aku ngoding di semua blog ini di hp lama, alhasil aku gk bisa pakai 100% kemampuan Astro disini. Yg paling berdampak adalah hp-ku yg gk support _sharp_. Sekedar informasi, _sharp_ itu adalah library Node js yg dipake buat manipulasi gambar, dan Astro make ini buat Image component mereka. Karena aku gk bisa pake sharp, aku kehilangan akses ke fitur paling penting di Image component yaitu Image Optimisation. Ini maksa aku buat pake Image Optimisation milik Cloudinary dan ngelakuin manipulasi string url tiap kali aku mau pake gambar dari sana. Ini bener - bener ngeselin sih, aku harap masalah ini bisa cepet selesai.
+
+## Develop kode orang lain
+
+Yup, aku gk develop blog ini dari awal. Blog ini aslinya adalah template dari markhorn-dev, kamu bisa lihat sendiri di repo blog ini. Dulu, pas aku bikin project latihan, aku selalu mulai sendiri dari awal, dan aku pikir itu gpp, karena dipikiran ku kalau bikin sendiri itu "Bisa ngerti cara kerja kodenya dari awal sampai akhir, dan bikin makin jago ketimbang pake kode orang lain". **Naif sekaliiiiiiiiiiiiiiiiiii**.
+
+Develop kode orang lain maksa aku buat keluar dari zona nyaman dan ngoding dengan kode yg gk sesuai sama kebiasaan ku, ini bikin aku malah jauh lebih merhatiin dan pelajarin kodenya daripada kode yg aku buat sendiri. Aku bahkan jadi tau beberapa teknik yg dipake orang lain dan ternyata tekniknya jauh lebih efisien dari yg selama ini aku pake.
+
+## Mulai pake AI
+
+Okey aku tau kedengerannya kayak maksa banget buat masukin AI disini, tapi aku bakalan ngerjain project ini jauh lebih lama kalau aku gk dibantu AI.
+
+Aku masih gk percayain AI buat ngerjain kode - kode penting di project ini (Kayak layouting dan beberapa logic penting) tapi untuk beberapa hal kayak bikin config, bikin unit test, atau bikin function sederhana, aku bisa serahin itu ke AI. Ini bikin aku lebih fokus buat ngerjain hal yg lebih penting ketimbang ngoding hal-hal yg notabenenya udah sering aku lakuin dan bisa diserahin ke AI.
+
+## Ngoding itu gk murah
+
+Aku bener-bener ngerasain gimana susahnya ngoding pake budget terbatas dan alat seadanya itu gimana. Aku cuman pake domain yg aku beli murah 5rb, aku juga ngoding cuman modal hp yg udah kupake dari SMP sampe sekarang lulus SMK. Boy it's hard to code this project.
+
+Domain ku gk trustworthy dan ditolak sama Google Search Console, hp ku yg udah lama ini ngelag banget sampe butuh waktu 1.5 - 2 menit cuman buat nyalain dev servernya (dan itu pun aku udah pake vite). Mana tiap kali save kodingan harus nunggu 10 detik lebih biar websitenya ke update, belum lagi pas ngetik aja ada delay setengah detik atau lebih.
+
+Jadi ini agak pahit, tapi kalau kamu kayak aku dan gk punya budget banyak (atau bahkan gk ada sama sekali) buat ngoding, perjalanan kamu bakal susah, pasti kehambat berkali-kali. Aku sih enjoy aja karena emang dari dulu udah hobi ngoding dan ngelag dikit doang gk bakal bikin aku berhenti.
+
+## Belajar buat gagal
+
+Ini mungkin kedengeran _kilse_ banget, tapi dengan langsung ngebuat sesuatu yg _cukup sulit_ untuk ukuran pemula, aku belajar kalau _gagal itu wajar, gagal berkali-kali itu wajar_.
+
+Gk kehitung berapa kali aku gagal pas ngerjain project ini, gagal deploy, gagal migrate, gagal build, gagal test, dsb. Ini jauh beda dengan pas aku ngerjain project latihan dulu yg mentok - mentok paling cuman code error doang.
+
+Tapi akhirnya? Blog nya jadi, aku gk tau blog ini bakal jadi apa di masa depan, tapi hanya karena aku gagal berkali-kali pas development, bukan berarti aku gagal ngebangun project ini, aku tetep berhasil bangun sebuah blog sendiri yg mungkin cuman sedikit orang yg bisa ngelakuinnya, mungkin......
+
+Oke, banyak sih orang yg punya blog sendiri, tapi setidaknya aku tetep berhasil bikin sesuatu.
+
+## Kesimpulan
+
+Kuharap tulisanku ini bisa jadi pembuka buat orang-orang yg masih belajar ngoding dan belum pernah bikin sesuatu sampai production. Sebagai pemula yg masih belajar, aku emang belum kayak sepuh-sepuh disini, tapi setidaknya aku pengen pengalamanku ini bisa nge buka kamu yg mungkin masih belajar buat ngeliat lika-liku ngoding sampai ke production dari sudut pandang pemula.
+
+Aku bakal update terus series ini dengan pengalaman ku saat ngoding, aku mungkin akan masukin hal lain yg gk berkaitan dengan programming disini, who knows?
+
+Sampai ketemu di artikel selanjutnya!

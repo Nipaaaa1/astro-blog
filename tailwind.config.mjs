@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["WorkSans", ...defaultTheme.fontFamily.sans],
+        sans: ["Work Sans Variable", ...defaultTheme.fontFamily.sans],
         serif: ["Lora", ...defaultTheme.fontFamily.serif],
         title: ["BoldGroove", ...defaultTheme.fontFamily.serif],
       },
